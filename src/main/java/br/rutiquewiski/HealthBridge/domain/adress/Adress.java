@@ -11,18 +11,18 @@ import lombok.NoArgsConstructor;
 @Getter
 public class Adress {
 
-    private String streetAddress;
+    private String street_address;
     private String neighborhood;
-    private String postalCode;
+    private String postal_code;
     private String number;
     private String complement;
     private String city;
     private String state;
 
     public Adress(AdressDTO adressDTO) {
-        this.streetAddress = adressDTO.streetAddress();
+        this.street_address = adressDTO.street_address();
         this.neighborhood = adressDTO.neighborhood();
-        this.postalCode = adressDTO.postalCode();
+        this.postal_code = adressDTO.postal_code();
         this.number = adressDTO.number();
         this.complement = adressDTO.complement();
         this.city = adressDTO.city();
