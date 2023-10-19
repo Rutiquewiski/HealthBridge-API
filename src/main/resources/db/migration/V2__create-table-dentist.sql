@@ -5,7 +5,6 @@ CREATE TABLE dentist (
   email VARCHAR(100) NOT NULL UNIQUE,
   phone VARCHAR(100) NOT NULL,
   document VARCHAR(100) NOT NULL UNIQUE,
-  specialties JSON,
   active TINYINT NOT NULL,
   street_address VARCHAR(100) NOT NULL,
   neighborhood VARCHAR(100),

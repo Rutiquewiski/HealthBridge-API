@@ -27,7 +27,13 @@ public class Dentist {
     @Embedded
     private Adress adress;
 
-    private List<String> specialties;
+    @ManyToMany
+    @JoinTable(
+            name = "dentist_specialties",
+            joinColumns = @JoinColumn(name = "dentist_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialty_name")
+    )
+    private List<DentalSpecialty> specialties;
 
     private boolean active;
 

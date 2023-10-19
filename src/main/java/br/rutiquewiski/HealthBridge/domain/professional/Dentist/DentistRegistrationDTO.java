@@ -19,6 +19,6 @@ public record DentistRegistrationDTO(
         String document,
         @Valid
         AdressDTO adressDTO,
-        List<String>specialties
+        List<DentalSpecialty>specialties
 ) {
 }
