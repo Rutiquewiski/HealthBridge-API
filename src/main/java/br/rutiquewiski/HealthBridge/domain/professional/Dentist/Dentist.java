@@ -42,7 +42,7 @@ public class Dentist {
         this.email = dentistRegistrationDTO.email();
         this.phone = dentistRegistrationDTO.phone();
         this.document = dentistRegistrationDTO.document();
-        this.adress = new Adress(dentistRegistrationDTO.adressDTO());
+        this.adress = new Adress(dentistRegistrationDTO.adress());
         this.specialties = dentistRegistrationDTO.specialties();
         this.active = true;
     }

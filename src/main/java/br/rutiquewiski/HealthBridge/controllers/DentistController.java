@@ -6,11 +6,10 @@ import br.rutiquewiski.HealthBridge.repositories.DentistRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -31,5 +30,11 @@ public class DentistController {
         var uri = uriComponentsBuilder.path("/dentist/{id}").buildAndExpand(dentist.getId()).toUri();
 
         return ResponseEntity.ok(uri);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<Dentist>> getAllDentists(Pageable pageable) {
+
+        return ResponseEntity.ok(dentistRepository.findAllByActiveTrue(pageable));
     }
 }
