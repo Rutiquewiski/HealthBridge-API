@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface DentistRepository extends JpaRepository<Dentist, Integer> {
 
     Page<Dentist> findAllByActiveTrue(Pageable pageable);
+
+    Dentist findByIdAndActiveTrue(Integer id);
 }

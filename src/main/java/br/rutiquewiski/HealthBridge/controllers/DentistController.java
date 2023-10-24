@@ -1,6 +1,7 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
 import br.rutiquewiski.HealthBridge.domain.professional.Dentist.Dentist;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentistListingDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentistRegistrationDTO;
 import br.rutiquewiski.HealthBridge.repositories.DentistRepository;
 import jakarta.transaction.Transactional;
@@ -11,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/dentist")
@@ -33,8 +36,34 @@ public class DentistController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Dentist>> getAllDentists(Pageable pageable) {
+    public ResponseEntity<?> getAllDentists(Pageable pageable) {
 
-        return ResponseEntity.ok(dentistRepository.findAllByActiveTrue(pageable));
+        Page<DentistListingDTO> dentists = dentistRepository.findAllByActiveTrue(pageable).map(DentistListingDTO::new);
+
+        if (dentists.isEmpty()) {
+
+            return ResponseEntity.ok("Empty list");
+
+        } else {
+
+            return ResponseEntity.ok(dentists);
+        }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getDentistDetails(@PathVariable Integer id) {
+
+        Dentist dentist = dentistRepository.findByIdAndActiveTrue(id);
+
+        if (dentist == null) {
+
+            return ResponseEntity.badRequest().body("Invalid information");
+
+        } else {
+
+            return ResponseEntity.ok(dentist);
+        }
+    }
+
+
 }
