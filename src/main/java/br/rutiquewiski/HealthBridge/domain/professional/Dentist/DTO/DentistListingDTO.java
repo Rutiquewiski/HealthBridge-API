@@ -1,4 +1,7 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Dentist;
+package br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO;
+
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.Dentist;
 
 import java.util.List;
 

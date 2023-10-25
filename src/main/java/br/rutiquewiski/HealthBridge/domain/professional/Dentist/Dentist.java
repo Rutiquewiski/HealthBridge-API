@@ -1,6 +1,8 @@
 package br.rutiquewiski.HealthBridge.domain.professional.Dentist;
 
 import br.rutiquewiski.HealthBridge.domain.adress.Adress;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistRegistrationDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,5 +47,36 @@ public class Dentist {
         this.adress = new Adress(dentistRegistrationDTO.adress());
         this.specialties = dentistRegistrationDTO.specialties();
         this.active = true;
+    }
+
+    public void updateInformation(DentistUpdateDTO dentistUpdateDTO) {
+
+        if (dentistUpdateDTO.name() != null) {
+            this.name = dentistUpdateDTO.name();
+        }
+
+        if (dentistUpdateDTO.email() != null) {
+            this.email = dentistUpdateDTO.email();
+        }
+
+        if (dentistUpdateDTO.phone() != null) {
+            this.phone = dentistUpdateDTO.phone();
+        }
+
+        if (dentistUpdateDTO.document() != null) {
+            this.document = dentistUpdateDTO.document();
+        }
+
+        if (dentistUpdateDTO.adress() != null) {
+            this.adress = new Adress(dentistUpdateDTO.adress());
+        }
+
+        if (dentistUpdateDTO.specialties() != null) {
+            this.specialties = dentistUpdateDTO.specialties();
+        }
+    }
+
+    public void safeDelete() {
+        this.active = false;
     }
 }

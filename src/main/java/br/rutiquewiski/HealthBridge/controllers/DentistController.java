@@ -1,8 +1,10 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistDetailsDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistUpdateDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.Dentist.Dentist;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentistListingDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentistRegistrationDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistListingDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistRegistrationDTO;
 import br.rutiquewiski.HealthBridge.repositories.DentistRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -12,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/dentist")
@@ -61,9 +61,44 @@ public class DentistController {
 
         } else {
 
-            return ResponseEntity.ok(dentist);
+            return ResponseEntity.ok(new DentistDetailsDTO(dentist));
         }
     }
 
+    @Transactional
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateDentist(@PathVariable Integer id, @RequestBody DentistUpdateDTO dentistUpdateDTO) {
+
+        Dentist dentist = dentistRepository.findByIdAndActiveTrue(id);
+
+        if (dentist == null) {
+
+            return ResponseEntity.badRequest().body("Invalid information");
+
+        } else {
+
+            dentist.updateInformation(dentistUpdateDTO);
+            dentistRepository.save(dentist);
+            return ResponseEntity.ok("Dentist information updated");
+        }
+    }
+
+    @Transactional
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDentist(@PathVariable Integer id) {
+
+        Dentist dentist = dentistRepository.findByIdAndActiveTrue(id);
+
+        if (dentist == null) {
+
+            return ResponseEntity.badRequest().body("Invalid information");
+
+        } else {
+
+            dentist.safeDelete();
+            dentistRepository.save(dentist);
+            return ResponseEntity.ok("Dentist deleted");
+        }
+    }
 
 }
