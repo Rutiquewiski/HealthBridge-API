@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/dentalspecialties")
+@RequestMapping("api/v1/dental-specialties")
 public class DentalSpecialtyController {
 
     @Autowired
@@ -61,6 +61,4 @@ public class DentalSpecialtyController {
 
         }
     }
-
-
 }

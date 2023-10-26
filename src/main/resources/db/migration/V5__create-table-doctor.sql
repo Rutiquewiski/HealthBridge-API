@@ -1,0 +1,16 @@
+CREATE TABLE doctor (
+
+  id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  phone VARCHAR(100) NOT NULL,
+  document VARCHAR(100) NOT NULL UNIQUE,
+  active TINYINT NOT NULL,
+  street_address VARCHAR(100) NOT NULL,
+  neighborhood VARCHAR(100),
+  postal_code VARCHAR(50) NOT NULL,
+  number VARCHAR(50) NOT NULL,
+  complement VARCHAR(50),
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(100) NOT NULL
+)
