@@ -5,17 +5,18 @@ import jakarta.validation.constraints.Pattern;
 
 public record AdressDTO(
         @NotBlank
-        String streetAddress,
-        @NotBlank
+        String street_address,
+
         String neighborhood,
         @NotBlank
         @Pattern(regexp = "\\d{8}")  //This is Brazil's postal code pattern
-        String postalCode,
+        String postal_code,
         @NotBlank
         String number,
-        @NotBlank
         String complement,
+        @NotBlank
         String city,
+        @NotBlank
         String state
 ) {
 }
