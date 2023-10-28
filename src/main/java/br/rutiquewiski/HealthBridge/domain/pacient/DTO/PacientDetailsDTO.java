@@ -4,6 +4,7 @@ import br.rutiquewiski.HealthBridge.domain.adress.Adress;
 import br.rutiquewiski.HealthBridge.domain.pacient.Pacient;
 
 public record PacientDetailsDTO(
+        Integer id,
         String name,
         String email,
         String phone,
@@ -11,6 +12,6 @@ public record PacientDetailsDTO(
         Adress adress
 ) {
     public PacientDetailsDTO(Pacient pacient) {
-        this(pacient.getName(), pacient.getEmail(), pacient.getPhone(), pacient.getDocument(), pacient.getAdress());
+        this(pacient.getId(), pacient.getName(), pacient.getEmail(), pacient.getPhone(), pacient.getDocument(), pacient.getAdress());
     }
 }
