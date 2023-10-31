@@ -1,5 +1,6 @@
 package br.rutiquewiski.HealthBridge.infra.errors;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,4 +23,9 @@ public class ExceptionHandlerAPI {
             this(error.getField(), error.getDefaultMessage());
         }
     };
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<?> handleError404() {
+        return ResponseEntity.notFound().build();
+    }
 }
