@@ -24,8 +24,4 @@ public class ExceptionHandlerAPI {
         }
     };
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<?> handleError404() {
-        return ResponseEntity.notFound().build();
-    }
 }
