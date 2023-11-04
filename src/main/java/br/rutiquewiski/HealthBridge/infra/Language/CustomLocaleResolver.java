@@ -10,11 +10,10 @@ public class CustomLocaleResolver extends AcceptHeaderLocaleResolver {
 
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
-        return Locale.ENGLISH; // Define o idioma padrão como inglês
+        return Locale.ENGLISH; // Sets the language to english
     }
 
     @Override
     public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-        // Define o idioma, se necessário
     }
 }
