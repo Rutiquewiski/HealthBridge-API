@@ -15,6 +15,8 @@ public class ExceptionHandlerAPI {
 
         var errors = exception.getFieldErrors();
         return ResponseEntity.badRequest().body(errors.stream().map(ValidationErrorInfo::new).toList());
+
+        //This method handles the exception that happens when the API receives and DTO with an invalid or null field
     }
 
     private record ValidationErrorInfo(String field, String message){
