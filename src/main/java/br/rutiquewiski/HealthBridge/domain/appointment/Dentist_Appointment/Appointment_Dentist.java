@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "dentist_appointment")
+@Table(name = "appointment_dentist")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class DentistAppointment {
+public class Appointment_Dentist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
