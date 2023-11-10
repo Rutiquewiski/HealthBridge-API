@@ -1,4 +1,4 @@
-package br.rutiquewiski.HealthBridge.infra.Language;
+package br.rutiquewiski.HealthBridge.infra.language;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

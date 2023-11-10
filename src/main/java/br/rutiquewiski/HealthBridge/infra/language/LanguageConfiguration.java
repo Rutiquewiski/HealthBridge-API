@@ -1,4 +1,4 @@
-package br.rutiquewiski.HealthBridge.infra.Language;
+package br.rutiquewiski.HealthBridge.infra.language;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

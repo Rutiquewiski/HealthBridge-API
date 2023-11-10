@@ -1,4 +1,4 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Dentist;
+package br.rutiquewiski.HealthBridge.domain.professional.doctor;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "dental_specialty")
+@Table(name = "medical_specialty")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DentalSpecialty {
+public class MedicalSpecialty {
 
     @Id
     private String name;

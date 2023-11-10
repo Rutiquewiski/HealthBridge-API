@@ -1,8 +1,8 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Dentist;
+package br.rutiquewiski.HealthBridge.domain.professional.dentist;
 
 import br.rutiquewiski.HealthBridge.domain.adress.Adress;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistRegistrationDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistUpdateDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistRegistrationDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

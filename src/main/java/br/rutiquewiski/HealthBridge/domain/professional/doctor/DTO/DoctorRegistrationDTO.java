@@ -1,14 +1,14 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO;
+package br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO;
 
 import br.rutiquewiski.HealthBridge.domain.adress.AdressDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.doctor.MedicalSpecialty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-public record DentistRegistrationDTO(
+public record DoctorRegistrationDTO(
         @NotNull
         String name,
         @NotNull
@@ -20,6 +20,6 @@ public record DentistRegistrationDTO(
         String document,
         @Valid
         AdressDTO adress,
-        List<DentalSpecialty>specialties
+        List<MedicalSpecialty> specialties
 ) {
 }

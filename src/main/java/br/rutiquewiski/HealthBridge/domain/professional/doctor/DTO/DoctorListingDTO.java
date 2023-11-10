@@ -1,7 +1,7 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Doctor.DTO;
+package br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO;
 
-import br.rutiquewiski.HealthBridge.domain.professional.Doctor.Doctor;
-import br.rutiquewiski.HealthBridge.domain.professional.Doctor.MedicalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.doctor.Doctor;
+import br.rutiquewiski.HealthBridge.domain.professional.doctor.MedicalSpecialty;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package br.rutiquewiski.HealthBridge.domain.appointment.Dentist_Appointment;
+package br.rutiquewiski.HealthBridge.domain.appointment.dentist;
 
-import br.rutiquewiski.HealthBridge.domain.pacient.Pacient;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.Dentist;
+import br.rutiquewiski.HealthBridge.domain.patient.Patient;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.Dentist;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,8 +27,8 @@ public class Appointment_Dentist {
     private Dentist dentist;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pacient_id")
-    private Pacient pacient;
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
     private LocalDateTime date;
 

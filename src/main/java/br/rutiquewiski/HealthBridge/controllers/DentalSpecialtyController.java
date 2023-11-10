@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DentalSpecialty;
 import br.rutiquewiski.HealthBridge.repositories.DentalSpecialtyRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

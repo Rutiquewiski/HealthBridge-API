@@ -1,7 +1,7 @@
-package br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO;
+package br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO;
 
 import br.rutiquewiski.HealthBridge.domain.adress.AdressDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DentalSpecialty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 

@@ -1,10 +1,10 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistDetailsDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistUpdateDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.Dentist;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistListingDTO;
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DTO.DentistRegistrationDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistDetailsDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistUpdateDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.Dentist;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistListingDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistRegistrationDTO;
 import br.rutiquewiski.HealthBridge.repositories.DentistRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
