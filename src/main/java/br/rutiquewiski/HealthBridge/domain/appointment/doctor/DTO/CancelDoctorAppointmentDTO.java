@@ -1,4 +1,8 @@
 package br.rutiquewiski.HealthBridge.domain.appointment.doctor.DTO;
 
-public record CancelDoctorAppointmentDTO() {
+import jakarta.validation.constraints.NotNull;
+
+public record CancelDoctorAppointmentDTO(
+        @NotNull Integer appointmentId
+) {
 }
