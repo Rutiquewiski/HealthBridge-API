@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class MedicalSpecialtyController {
 
     @Autowired
-    MedicalSpecialtyRepository medicalSpecialtyRepository;
+    private MedicalSpecialtyRepository medicalSpecialtyRepository;
 
     @GetMapping
     public ResponseEntity<Page<MedicalSpecialty>> getMedicalSpecialties(Pageable pageable) {

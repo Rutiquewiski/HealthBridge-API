@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class DentistController {
 
     @Autowired
-    DentistRepository dentistRepository;
+    private DentistRepository dentistRepository;
 
     @PostMapping
     @Transactional

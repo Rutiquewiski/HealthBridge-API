@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class PatientController {
 
     @Autowired
-    PatientRepository patientRepository;
+    private PatientRepository patientRepository;
 
     @PostMapping
     @Transactional

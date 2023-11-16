@@ -6,7 +6,7 @@ import br.rutiquewiski.HealthBridge.infra.errors.ValidationException;
 
 public interface AppointmentCreationValidator {
 
-    void validate(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException;
+    void validateDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException;
 
-    void validate(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException;
+    void validateDoctorAppointment(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException;
 }

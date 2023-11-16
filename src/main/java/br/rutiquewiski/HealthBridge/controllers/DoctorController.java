@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class DoctorController {
 
     @Autowired
-    DoctorRepository doctorRepository;
+    private DoctorRepository doctorRepository;
 
     @PostMapping
     @Transactional

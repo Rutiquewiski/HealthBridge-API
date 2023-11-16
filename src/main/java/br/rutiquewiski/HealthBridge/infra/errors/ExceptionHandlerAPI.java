@@ -25,4 +25,9 @@ public class ExceptionHandlerAPI {
         }
     };
 
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<?> handleValidationException(ValidationException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+        //This method handles the exception that we created to manage validations
+    }
 }
