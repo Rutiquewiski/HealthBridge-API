@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HealthBridgeApplication {
 
 
-	//Start API
+	//Main class - Start API
 	public static void main(String[] args) {
 		SpringApplication.run(HealthBridgeApplication.class, args);
 	}
