@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DuplicateValidator implements AppointmentCreationValidator{
 
+    //This validator checks if the patient already has an appointment on this date
+
     @Autowired
     private Appointment_DentistRepository appointment_dentistRepository;
 

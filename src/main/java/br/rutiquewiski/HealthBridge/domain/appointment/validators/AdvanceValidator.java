@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 
 @Component
 public class AdvanceValidator implements AppointmentCreationValidator{
+
+    //This validator checks if the appointment is at least 30 minutes in advance
+
     @Override
     public void validateDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
 
