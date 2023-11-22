@@ -1,7 +1,6 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
-import br.rutiquewiski.HealthBridge.domain.professional.Dentist.DentalSpecialty;
-import br.rutiquewiski.HealthBridge.domain.professional.Doctor.MedicalSpecialty;
+import br.rutiquewiski.HealthBridge.domain.professional.doctor.MedicalSpecialty;
 import br.rutiquewiski.HealthBridge.repositories.MedicalSpecialtyRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class MedicalSpecialtyController {
 
     @Autowired
-    MedicalSpecialtyRepository medicalSpecialtyRepository;
+    private MedicalSpecialtyRepository medicalSpecialtyRepository;
 
     @GetMapping
     public ResponseEntity<Page<MedicalSpecialty>> getMedicalSpecialties(Pageable pageable) {
