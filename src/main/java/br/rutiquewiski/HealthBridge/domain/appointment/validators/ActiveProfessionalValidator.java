@@ -8,7 +8,9 @@ import br.rutiquewiski.HealthBridge.infra.errors.ValidationException;
 import br.rutiquewiski.HealthBridge.repositories.DentistRepository;
 import br.rutiquewiski.HealthBridge.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ActiveProfessionalValidator implements AppointmentCreationValidator{
 
     @Autowired
