@@ -36,9 +36,19 @@ public class DentistController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllDentists(Pageable pageable) {
+    public ResponseEntity<?> getAllDentists(@RequestParam(required = false) String name, Pageable pageable) {
 
-        Page<DentistListingDTO> dentists = dentistRepository.findAllByActiveTrue(pageable).map(DentistListingDTO::new);
+        Page<DentistListingDTO> dentists;
+
+        if (name != null) {
+
+            dentists = dentistRepository.findAllByActiveTrueAndNameContaining(pageable, name).map(DentistListingDTO::new);
+
+        } else {
+
+            dentists = dentistRepository.findAllByActiveTrue(pageable).map(DentistListingDTO::new);
+        }
+
 
         if (dentists.isEmpty()) {
 

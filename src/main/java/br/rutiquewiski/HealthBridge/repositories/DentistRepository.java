@@ -11,5 +11,7 @@ public interface DentistRepository extends JpaRepository<Dentist, Integer> {
 
     Page<Dentist> findAllByActiveTrue(Pageable pageable);
 
+    Page<Dentist> findAllByActiveTrueAndNameContaining(Pageable pageable, String name);
+
     Dentist findByIdAndActiveTrue(Integer id);
 }
