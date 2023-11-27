@@ -24,7 +24,7 @@ public class DoctorAppointmentController {
     private AppointmentManager appointmentManager;
 
     @PostMapping
-    public ResponseEntity<ListDoctorAppointmentDTO> createDoctortAppointment(@RequestBody @Valid CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
+    public ResponseEntity<ListDoctorAppointmentDTO> createDoctorAppointment(@RequestBody @Valid CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
 
         ListDoctorAppointmentDTO listDoctorAppointmentDTO = appointmentManager.createDoctorAppointment(createDoctorAppointmentDTO);
         return ResponseEntity.ok(listDoctorAppointmentDTO);

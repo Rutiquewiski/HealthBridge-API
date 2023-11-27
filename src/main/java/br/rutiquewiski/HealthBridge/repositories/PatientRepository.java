@@ -9,5 +9,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
     Page<Patient> findAllByActiveTrue(Pageable pageable);
 
+    Page<Patient> findAllByActiveTrueAndNameContaining(Pageable pageable, String name);
+
     Patient findByIdAndActiveTrue(Integer id);
 }

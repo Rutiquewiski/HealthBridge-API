@@ -9,5 +9,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
     Page<Doctor> findAllByActiveTrue(Pageable pageable);
 
+    Page<Doctor> findAllByActiveTrueAndNameContaining(Pageable pageable, String name);
+
     Doctor findByIdAndActiveTrue(Integer id);
 }
