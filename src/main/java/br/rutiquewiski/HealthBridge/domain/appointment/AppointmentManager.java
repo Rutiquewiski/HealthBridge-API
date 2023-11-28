@@ -65,7 +65,11 @@ public class AppointmentManager {
             }
         });
 
-        Dentist dentist = dentistRepository.findByIdAndActiveTrue(createDentistAppointmentDTO.dentistId());
+        Dentist dentist = selectDentist(createDentistAppointmentDTO);
+
+        if (dentist == null) {
+            throw new ValidationException("No dentists available for this date");
+        }
 
         Appointment_Dentist appointment_dentist = new Appointment_Dentist(null, dentist, patient, createDentistAppointmentDTO.date(), false);
         appointment_dentistRepository.save(appointment_dentist);
@@ -97,10 +101,40 @@ public class AppointmentManager {
             }
         });
 
-        Doctor doctor = doctorRepository.findByIdAndActiveTrue(createDoctorAppointmentDTO.doctorId());
+        Doctor doctor = selectDoctor(createDoctorAppointmentDTO);
+
+        if (doctor == null) {
+            throw new ValidationException("No doctors available for this date");
+        }
 
         Appointment_Doctor appointment_doctor = new Appointment_Doctor(null, doctor, patient, createDoctorAppointmentDTO.date(), false);
         appointment_doctorRepository.save(appointment_doctor);
         return new ListDoctorAppointmentDTO(appointment_doctor);
+    }
+
+    private Dentist selectDentist(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
+
+        if (createDentistAppointmentDTO.dentistId() != null) {
+            return dentistRepository.findByIdAndActiveTrue(createDentistAppointmentDTO.dentistId());
+        }
+
+        if (createDentistAppointmentDTO.dentalSpecialty() == null) {
+            throw new ValidationException("Specialty is required when dentist not selected");
+        }
+
+        return dentistRepository.findRandomDentist(createDentistAppointmentDTO.dentalSpecialty(), createDentistAppointmentDTO.date());
+    }
+
+    private Doctor selectDoctor(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
+
+        if (createDoctorAppointmentDTO.doctorId() != null) {
+            return doctorRepository.findByIdAndActiveTrue(createDoctorAppointmentDTO.doctorId());
+        }
+
+        if (createDoctorAppointmentDTO.medicalSpecialty() == null) {
+            throw new ValidationException("Specialty is required when doctor not selected");
+        }
+
+        return doctorRepository.findRandomDoctor(createDoctorAppointmentDTO.medicalSpecialty(), createDoctorAppointmentDTO.date());
     }
 }

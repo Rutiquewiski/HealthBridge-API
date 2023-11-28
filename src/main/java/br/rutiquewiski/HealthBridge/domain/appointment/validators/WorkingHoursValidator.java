@@ -19,7 +19,7 @@ public class WorkingHoursValidator implements AppointmentCreationValidator{
         var closedNight = appointmentDate.getHour() > 18;
 
         if (sunday || closedMorning || closedNight) {
-            throw new ValidationException("Appointment not in working hours");
+            throw new ValidationException("Appointment not in working hours/days");
         }
 
     }
@@ -33,7 +33,7 @@ public class WorkingHoursValidator implements AppointmentCreationValidator{
         var closedNight = appointmentDate.getHour() > 18;
 
         if (sunday || closedMorning || closedNight) {
-            throw new ValidationException("Appointment not in working hours");
+            throw new ValidationException("Appointment not in working hours/days");
         }
 
     }

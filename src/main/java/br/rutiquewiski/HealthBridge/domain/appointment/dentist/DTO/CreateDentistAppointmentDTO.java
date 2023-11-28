@@ -10,5 +10,5 @@ public record CreateDentistAppointmentDTO(
         Integer dentistId,
         @NotNull Integer patientId,
         @NotNull @Future LocalDateTime date,
-        DentalSpecialty dentalSpecialty
+        String dentalSpecialty
 ) {}

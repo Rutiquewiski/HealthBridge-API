@@ -10,6 +10,6 @@ public record CreateDoctorAppointmentDTO(
         Integer doctorId,
         @NotNull Integer patientId,
         @NotNull @Future LocalDateTime date,
-        MedicalSpecialty medicalSpecialty
+        String medicalSpecialty
 ) {
 }
