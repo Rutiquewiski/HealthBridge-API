@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Table(name = "userauth")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
