@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "userauth")
+@Table(name = "user_auth")
 @Entity
 @Getter
 @Setter
