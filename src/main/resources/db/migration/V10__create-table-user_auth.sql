@@ -1,4 +1,4 @@
-create table userauth(
+create table user_auth(
 
     id bigint not null auto_increment,
     name varchar(100) not null,
