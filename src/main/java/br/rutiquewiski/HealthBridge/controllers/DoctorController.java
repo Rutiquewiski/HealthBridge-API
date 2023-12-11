@@ -31,7 +31,7 @@ public class DoctorController {
 
         doctorRepository.save(doctor);
 
-        var uri = uriComponentsBuilder.path("/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
+        var uri = uriComponentsBuilder.path("/api/v1/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
 
         return ResponseEntity.ok(uri);
     }

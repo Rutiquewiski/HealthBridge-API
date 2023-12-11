@@ -30,7 +30,7 @@ public class DentistController {
 
         dentistRepository.save(dentist);
 
-        var uri = uriComponentsBuilder.path("/dentist/{id}").buildAndExpand(dentist.getId()).toUri();
+        var uri = uriComponentsBuilder.path("/api/v1/dentist/{id}").buildAndExpand(dentist.getId()).toUri();
 
         return ResponseEntity.ok(uri);
     }
