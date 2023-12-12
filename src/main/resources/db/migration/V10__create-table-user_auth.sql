@@ -1,10 +1,11 @@
-create table user_auth(
+CREATE TABLE user_auth(
 
-    id bigint not null auto_increment,
-    name varchar(100) not null,
-    username varchar(100) not null unique,
-    password varchar(100) not null,
+    id bigint NOT NULL auto_increment,
+    name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    active TINYINT NOT NULL,
 
-    primary key(id)
+    PRIMARY KEY(id)
 
 );
