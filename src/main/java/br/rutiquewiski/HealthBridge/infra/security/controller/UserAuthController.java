@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/user")
 public class UserAuthController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class UserAuthController {
 
         userAuthRepository.save(user);
 
-        var uri = uriComponentsBuilder.path("/api/v1/user/{id}").buildAndExpand(user.getId()).toUri();
+        var uri = uriComponentsBuilder.path("/api/user/{id}").buildAndExpand(user.getId()).toUri();
 
         return ResponseEntity.ok(uri);
     }
