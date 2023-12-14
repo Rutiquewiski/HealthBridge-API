@@ -49,4 +49,23 @@ public class UserAuthController {
             return ResponseEntity.ok("User information updated");
         }
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id){
+
+        UserAuth user = userAuthRepository.findByIdAndActiveTrue(id);
+
+        if (user == null){
+
+            return ResponseEntity.badRequest().body("Invalid information");
+
+        } else {
+
+            user.safeDelete();
+            userAuthRepository.save(user);
+
+            return ResponseEntity.ok("User deleted");
+        }
+    }
 }
