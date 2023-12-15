@@ -39,7 +39,7 @@ public class UserAuthController {
 
         if (user == null){
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
@@ -58,7 +58,7 @@ public class UserAuthController {
 
         if (user == null){
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 

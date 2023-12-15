@@ -67,7 +67,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
@@ -83,7 +83,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
@@ -101,7 +101,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
