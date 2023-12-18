@@ -8,17 +8,11 @@ import br.rutiquewiski.HealthBridge.repositories.Appointment_DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/appointment/doctor")
 public class DoctorAppointmentController {
-
-    @Autowired
-    private Appointment_DoctorRepository appointment_doctorRepository;
 
     @Autowired
     private AppointmentManager appointmentManager;
@@ -28,5 +22,13 @@ public class DoctorAppointmentController {
 
         ListDoctorAppointmentDTO listDoctorAppointmentDTO = appointmentManager.createDoctorAppointment(createDoctorAppointmentDTO);
         return ResponseEntity.ok(listDoctorAppointmentDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> cancelDoctorAppointment(@PathVariable Integer id) {
+
+        appointmentManager.cancelDoctorAppointment(id);
+
+        return ResponseEntity.ok("Appointment canceled");
     }
 }

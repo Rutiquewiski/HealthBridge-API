@@ -137,4 +137,29 @@ public class AppointmentManager {
 
         return doctorRepository.findRandomDoctor(createDoctorAppointmentDTO.medicalSpecialty(), createDoctorAppointmentDTO.date());
     }
+
+    public void cancelDentistAppointment(int id) {
+        Appointment_Dentist appointment_dentist = appointment_dentistRepository.findById(id).orElse(null);
+
+        if (appointment_dentist == null) {
+
+            return;
+        }
+
+        appointment_dentist.cancel();
+        appointment_dentistRepository.save(appointment_dentist);
+    }
+
+    public void cancelDoctorAppointment(int id) {
+        Appointment_Doctor appointment_doctor = appointment_doctorRepository.findById(id).orElse(null);
+
+        if (appointment_doctor == null) {
+
+            return;
+        }
+
+        appointment_doctor.cancel();
+        appointment_doctorRepository.save(appointment_doctor);
+    }
+
 }
