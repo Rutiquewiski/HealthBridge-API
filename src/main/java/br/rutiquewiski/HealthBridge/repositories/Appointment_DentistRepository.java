@@ -11,9 +11,7 @@ import java.time.LocalDateTime;
 @Repository
 public interface Appointment_DentistRepository extends JpaRepository<Appointment_Dentist, Integer> {
 
-    Page<Appointment_Dentist> findAllByCanceledFalse(Pageable pageable);
+    boolean existsByDentistIdAndDate(Integer dentistId, LocalDateTime date);
 
-    boolean existsByDentistIdAndDateAndCanceledFalse(Integer dentistId, LocalDateTime date);
-
-    boolean existsByPatientIdAndCanceledFalseAndDateBetween(Integer patientId, LocalDateTime first, LocalDateTime last);
+    boolean existsByPatientIdAndDateBetween(Integer patientId, LocalDateTime first, LocalDateTime last);
 }

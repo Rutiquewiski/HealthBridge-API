@@ -2,10 +2,10 @@ package br.rutiquewiski.HealthBridge.domain.appointment;
 
 import br.rutiquewiski.HealthBridge.domain.appointment.dentist.Appointment_Dentist;
 import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.CreateDentistAppointmentDTO;
-import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.ListDentistAppointmentDTO;
+import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.CreatedDentistAppointmentDTO;
 import br.rutiquewiski.HealthBridge.domain.appointment.doctor.Appointment_Doctor;
 import br.rutiquewiski.HealthBridge.domain.appointment.doctor.DTO.CreateDoctorAppointmentDTO;
-import br.rutiquewiski.HealthBridge.domain.appointment.doctor.DTO.ListDoctorAppointmentDTO;
+import br.rutiquewiski.HealthBridge.domain.appointment.doctor.DTO.CreatedDoctorAppointmentDTO;
 import br.rutiquewiski.HealthBridge.domain.appointment.validators.AppointmentCreationValidator;
 import br.rutiquewiski.HealthBridge.domain.patient.Patient;
 import br.rutiquewiski.HealthBridge.domain.professional.dentist.Dentist;
@@ -40,7 +40,7 @@ public class AppointmentManager {
 
 
 
-    public ListDentistAppointmentDTO createDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
+    public CreatedDentistAppointmentDTO createDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
 
         if (!patientRepository.existsById(createDentistAppointmentDTO.patientId())) {
 
@@ -71,12 +71,12 @@ public class AppointmentManager {
             throw new ValidationException("No dentists available for this date");
         }
 
-        Appointment_Dentist appointment_dentist = new Appointment_Dentist(null, dentist, patient, createDentistAppointmentDTO.date(), false);
+        Appointment_Dentist appointment_dentist = new Appointment_Dentist(null, dentist, patient, createDentistAppointmentDTO.date());
         appointment_dentistRepository.save(appointment_dentist);
-        return new ListDentistAppointmentDTO(appointment_dentist);
+        return new CreatedDentistAppointmentDTO(appointment_dentist);
     }
 
-    public ListDoctorAppointmentDTO createDoctorAppointment(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
+    public CreatedDoctorAppointmentDTO createDoctorAppointment(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
 
         if (!patientRepository.existsById(createDoctorAppointmentDTO.patientId())) {
 
@@ -107,9 +107,9 @@ public class AppointmentManager {
             throw new ValidationException("No doctors available for this date");
         }
 
-        Appointment_Doctor appointment_doctor = new Appointment_Doctor(null, doctor, patient, createDoctorAppointmentDTO.date(), false);
+        Appointment_Doctor appointment_doctor = new Appointment_Doctor(null, doctor, patient, createDoctorAppointmentDTO.date());
         appointment_doctorRepository.save(appointment_doctor);
-        return new ListDoctorAppointmentDTO(appointment_doctor);
+        return new CreatedDoctorAppointmentDTO(appointment_doctor);
     }
 
     private Dentist selectDentist(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
@@ -146,8 +146,7 @@ public class AppointmentManager {
             return;
         }
 
-        appointment_dentist.cancel();
-        appointment_dentistRepository.save(appointment_dentist);
+        appointment_dentistRepository.delete(appointment_dentist);
     }
 
     public void cancelDoctorAppointment(int id) {
@@ -158,8 +157,7 @@ public class AppointmentManager {
             return;
         }
 
-        appointment_doctor.cancel();
-        appointment_doctorRepository.save(appointment_doctor);
+        appointment_doctorRepository.delete(appointment_doctor);
     }
 
 }

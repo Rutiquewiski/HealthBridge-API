@@ -2,9 +2,8 @@ package br.rutiquewiski.HealthBridge.controllers;
 
 import br.rutiquewiski.HealthBridge.domain.appointment.AppointmentManager;
 import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.CreateDentistAppointmentDTO;
-import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.ListDentistAppointmentDTO;
+import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.CreatedDentistAppointmentDTO;
 import br.rutiquewiski.HealthBridge.infra.errors.ValidationException;
-import br.rutiquewiski.HealthBridge.repositories.Appointment_DentistRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +17,10 @@ public class DentistAppointmentController {
     private AppointmentManager appointmentManager;
 
     @PostMapping
-    public ResponseEntity<ListDentistAppointmentDTO> createDentistAppointment(@RequestBody @Valid CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
+    public ResponseEntity<CreatedDentistAppointmentDTO> createDentistAppointment(@RequestBody @Valid CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
 
-        ListDentistAppointmentDTO listDentistAppointmentDTO = appointmentManager.createDentistAppointment(createDentistAppointmentDTO);
-        return ResponseEntity.ok(listDentistAppointmentDTO);
+        CreatedDentistAppointmentDTO createdDentistAppointmentDTO1 = appointmentManager.createDentistAppointment(createDentistAppointmentDTO);
+        return ResponseEntity.ok(createdDentistAppointmentDTO1);
     }
 
     @DeleteMapping("/{id}")

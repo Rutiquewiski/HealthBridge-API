@@ -24,7 +24,7 @@ public class DuplicateValidator implements AppointmentCreationValidator{
 
         var firstTime = createDentistAppointmentDTO.date().withHour(7);
         var lastTime = createDentistAppointmentDTO.date().withHour(18);
-        var appointmentExists = appointment_dentistRepository.existsByPatientIdAndCanceledFalseAndDateBetween(createDentistAppointmentDTO.patientId(), firstTime, lastTime);
+        var appointmentExists = appointment_dentistRepository.existsByPatientIdAndDateBetween(createDentistAppointmentDTO.patientId(), firstTime, lastTime);
 
         if (appointmentExists) {
             throw new ValidationException("This patient already has an appointment on this date");
@@ -37,7 +37,7 @@ public class DuplicateValidator implements AppointmentCreationValidator{
 
         var firstTime = createDoctorAppointmentDTO.date().withHour(7);
         var lastTime = createDoctorAppointmentDTO.date().withHour(18);
-        var appointmentExists = appointment_doctorRepository.existsByPatientIdAndCanceledFalseAndDateBetween(createDoctorAppointmentDTO.patientId(), firstTime, lastTime);
+        var appointmentExists = appointment_doctorRepository.existsByPatientIdAndDateBetween(createDoctorAppointmentDTO.patientId(), firstTime, lastTime);
 
         if (appointmentExists) {
             throw new ValidationException("This patient already has an appointment on this date");
