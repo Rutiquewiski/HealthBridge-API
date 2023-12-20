@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("api/v1/doctor")
+@RequestMapping("api/doctor")
 public class DoctorController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class DoctorController {
 
         doctorRepository.save(doctor);
 
-        var uri = uriComponentsBuilder.path("/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
+        var uri = uriComponentsBuilder.path("/api/doctor/{id}").buildAndExpand(doctor.getId()).toUri();
 
         return ResponseEntity.ok(uri);
     }
@@ -67,7 +67,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
@@ -83,7 +83,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 
@@ -101,7 +101,7 @@ public class DoctorController {
 
         if (doctor == null) {
 
-            return ResponseEntity.badRequest().body("Invalid information");
+            return ResponseEntity.badRequest().body("Invalid id");
 
         } else {
 

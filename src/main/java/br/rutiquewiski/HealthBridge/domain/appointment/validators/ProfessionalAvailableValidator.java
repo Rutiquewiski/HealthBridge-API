@@ -19,7 +19,7 @@ public class ProfessionalAvailableValidator implements AppointmentCreationValida
     @Override
     public void validateDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
 
-        boolean existsAppointment = appointment_dentistRepository.existsByDentistIdAndDateAndCanceledFalse(createDentistAppointmentDTO.dentistId(), createDentistAppointmentDTO.date());
+        boolean existsAppointment = appointment_dentistRepository.existsByDentistIdAndDate(createDentistAppointmentDTO.dentistId(), createDentistAppointmentDTO.date());
 
         if (existsAppointment){
             throw new ValidationException("Dentist unavailable");
@@ -29,7 +29,7 @@ public class ProfessionalAvailableValidator implements AppointmentCreationValida
     @Override
     public void validateDoctorAppointment(CreateDoctorAppointmentDTO createDoctorAppointmentDTO) throws ValidationException {
 
-        boolean existsAppointment = appointment_doctorRepository.existsByDoctorIdAndDateAndCanceledFalse(createDoctorAppointmentDTO.doctorId(), createDoctorAppointmentDTO.date());
+        boolean existsAppointment = appointment_doctorRepository.existsByDoctorIdAndDate(createDoctorAppointmentDTO.doctorId(), createDoctorAppointmentDTO.date());
 
         if (existsAppointment){
             throw new ValidationException("Doctor unavailable");

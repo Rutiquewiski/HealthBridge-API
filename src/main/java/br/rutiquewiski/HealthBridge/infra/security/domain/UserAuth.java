@@ -1,5 +1,7 @@
 package br.rutiquewiski.HealthBridge.infra.security.domain;
 
+import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.UserRegistrationDTO;
+import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.UserUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +10,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,13 +25,15 @@ public class UserAuth implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
 
     private String username;
 
     private String password;
+
+    private boolean active;
 
     @Override
     public String getUsername(){
@@ -63,5 +68,27 @@ public class UserAuth implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public UserAuth(UserRegistrationDTO userRegistrationDTO) {
+        this.name = userRegistrationDTO.name();
+        this.username = userRegistrationDTO.username();
+        this.password = new BCryptPasswordEncoder().encode(userRegistrationDTO.password());
+        this.active = true;
+    }
+
+    public void updateInfo(UserUpdateDTO userUpdateDTO) {
+
+        if (userUpdateDTO.name() != null) {
+            this.name = userUpdateDTO.name();
+        }
+
+        if (userUpdateDTO.username() != null) {
+            this.username = userUpdateDTO.username();
+        }
+    }
+
+    public void safeDelete() {
+        this.active = false;
     }
 }

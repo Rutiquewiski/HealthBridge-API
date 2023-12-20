@@ -32,9 +32,4 @@ public class Appointment_Doctor {
 
     private LocalDateTime date;
 
-    private boolean canceled;
-
-    public void cancel(){
-        this.canceled = true;
-    }
 }

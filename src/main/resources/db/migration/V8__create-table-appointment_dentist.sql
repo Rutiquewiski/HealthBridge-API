@@ -3,7 +3,6 @@ CREATE TABLE appointment_dentist (
     dentist_id BIGINT NOT NULL,
     patient_id BIGINT NOT NULL,
     date DATETIME NOT NULL,
-    canceled TINYINT(1),
     FOREIGN KEY (dentist_id) REFERENCES Dentist(id),
     FOREIGN KEY (patient_id) REFERENCES Patient(id)
 );
