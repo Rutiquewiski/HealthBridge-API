@@ -38,4 +38,10 @@ public class ExceptionHandlerAPI {
         return ResponseEntity.badRequest().body(exception.getMessage());
         //This method handles the exception that happens when the API receives and DTO with a value on a field that does not accept duplicates
     }
+
+    @ExceptionHandler(LoginDataException.class)
+    public ResponseEntity<?> handleLoginException(LoginDataException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+        //This method handles the exception that happens when the user provides an invalid username or password for logging in
+    }
 }
