@@ -1,5 +1,5 @@
 package br.rutiquewiski.HealthBridge.infra.security.token;
 
 public record ResponseTokenDTO(String token) {
-    //This is the object sent for the response of log in
+    //This is the response object sent with successful authentication
 }
