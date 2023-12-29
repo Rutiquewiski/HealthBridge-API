@@ -1,5 +1,6 @@
 package br.rutiquewiski.HealthBridge.infra.security.controller;
 
+import br.rutiquewiski.HealthBridge.infra.errors.LoginDataException;
 import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.AuthenticationDTO;
 import br.rutiquewiski.HealthBridge.infra.security.domain.UserAuth;
 import br.rutiquewiski.HealthBridge.infra.security.service.TokenService;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.security.auth.login.LoginException;
+
 @RestController
 @RequestMapping("/api/login")
 public class AuthenticationController {
@@ -25,13 +28,21 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping
-    public ResponseEntity<ResponseTokenDTO> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) {
+    public ResponseEntity<ResponseTokenDTO> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) throws LoginDataException {
 
         var AuthToken = new UsernamePasswordAuthenticationToken(authenticationDTO.username(), authenticationDTO.password());
-        var authentication = authenticationManager.authenticate(AuthToken);
 
-        var tokenJWT = tokenService.generateToken((UserAuth) authentication.getPrincipal());
+        try {
 
-        return ResponseEntity.ok(new ResponseTokenDTO(tokenJWT));
+            var authentication = authenticationManager.authenticate(AuthToken);
+
+            var tokenJWT = tokenService.generateToken((UserAuth) authentication.getPrincipal());
+
+            return ResponseEntity.ok(new ResponseTokenDTO(tokenJWT));
+
+        } catch (Exception e) {
+
+            throw new LoginDataException("Invalid username or password");
+        }
     }
 }
