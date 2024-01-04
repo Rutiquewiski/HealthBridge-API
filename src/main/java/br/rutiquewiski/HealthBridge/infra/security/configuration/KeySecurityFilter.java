@@ -5,6 +5,7 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 
 public class KeySecurityFilter extends AbstractPreAuthenticatedProcessingFilter {
 
+    //This filter is responsible for API-KEY authorization
     private final String principalRequestHeader;
 
     public KeySecurityFilter(String principalRequestHeader) {
