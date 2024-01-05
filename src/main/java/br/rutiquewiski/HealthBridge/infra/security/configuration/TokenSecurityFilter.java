@@ -17,6 +17,8 @@ import java.io.IOException;
 @Component
 public class TokenSecurityFilter extends OncePerRequestFilter {
 
+    //This filter is responsible for TOKEN authorization
+
     @Autowired
     private TokenService tokenService;
 
