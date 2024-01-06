@@ -25,6 +25,8 @@ public class SecurityConfiguration {
     @Order(2)
     public static class StandardSecurityConfiguration {
 
+        //Regular token authentication
+
         @Autowired
         private TokenSecurityFilter tokenSecurityFilter;
 
