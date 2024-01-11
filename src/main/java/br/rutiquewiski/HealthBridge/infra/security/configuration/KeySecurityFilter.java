@@ -1,24 +1,16 @@
 package br.rutiquewiski.HealthBridge.infra.security.configuration;
 
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-public class KeySecurityFilter extends AbstractPreAuthenticatedProcessingFilter {
+import java.io.IOException;
 
-    //This filter is responsible for API-KEY authorization
-    private final String principalRequestHeader;
-
-    public KeySecurityFilter(String principalRequestHeader) {
-        this.principalRequestHeader = principalRequestHeader;
-    }
-
-    @Override
-    protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
-        return request.getHeader(principalRequestHeader);
-    }
-
-    @Override
-    protected Object getPreAuthenticatedCredentials(HttpServletRequest request) {
-        return "N/A";
-    }
+@Component
+public class KeySecurityFilter {
 }
