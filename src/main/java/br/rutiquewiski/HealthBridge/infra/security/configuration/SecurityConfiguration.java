@@ -27,7 +27,7 @@ public class SecurityConfiguration {
     @Order(2)  //This annotation sets this configuration to be the second one in the auth order
     public static class StandardSecurityConfiguration {
 
-        //Regular token authentication
+        //Regular token auth
 
         @Autowired
         private TokenSecurityFilter tokenSecurityFilter;
@@ -62,5 +62,6 @@ public class SecurityConfiguration {
     @Order(1)
     public static class ApiKeySecurityConfig {}
 
+    //API KEY auth
 
 }
