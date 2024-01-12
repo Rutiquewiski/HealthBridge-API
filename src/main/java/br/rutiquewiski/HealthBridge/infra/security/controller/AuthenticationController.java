@@ -30,6 +30,8 @@ public class AuthenticationController {
     @PostMapping
     public ResponseEntity<ResponseTokenDTO> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) throws LoginDataException {
 
+        //Method responsible for login
+
         var AuthToken = new UsernamePasswordAuthenticationToken(authenticationDTO.username(), authenticationDTO.password());
 
         try {
