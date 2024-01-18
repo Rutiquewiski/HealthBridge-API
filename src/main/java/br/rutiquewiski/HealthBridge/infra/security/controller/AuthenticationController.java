@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.security.auth.login.LoginException;
 
 @RestController
 @RequestMapping("/api/login")
@@ -29,6 +28,8 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity<ResponseTokenDTO> login(@RequestBody @Valid AuthenticationDTO authenticationDTO) throws LoginDataException {
+
+        //Method responsible for login
 
         var AuthToken = new UsernamePasswordAuthenticationToken(authenticationDTO.username(), authenticationDTO.password());
 
