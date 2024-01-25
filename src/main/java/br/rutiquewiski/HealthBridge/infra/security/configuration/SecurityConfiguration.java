@@ -61,6 +61,8 @@ public class SecurityConfiguration {
     @Order(1)
     public static class ApiKeySecurityConfiguration {
 
+        //Api key auth, any endpoint with key in the url uses authentication with api key instead of the jwt token
+
         @Autowired
         private KeySecurityFilter keySecurityFilter;
 
