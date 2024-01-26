@@ -12,11 +12,15 @@ import java.util.Optional;
 @Component
 public class ApiKeyExtractor {
 
+    //This class is responsible for extracting the api key and it's value from the headers of the request
+
+    @Value("${api.security.key.name}")
+    private String name;
     @Value("${api.security.key.value}")
     private String value;
 
     public Optional<Authentication> extract(HttpServletRequest request) {
-        String providedKey = request.getHeader("api-key");
+        String providedKey = request.getHeader(name);
         if (providedKey == null || !providedKey.equals(value))
             return Optional.empty();
 

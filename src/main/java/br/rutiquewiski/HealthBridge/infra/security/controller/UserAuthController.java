@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserAuthController {
 
     @Autowired
     private UserAuthRepository userAuthRepository;
 
-    @PostMapping
+    @PostMapping("/key/user")
     @Transactional
     public ResponseEntity<?> registerUser(@RequestBody @Valid UserRegistrationDTO userRegistrationDTO, UriComponentsBuilder uriComponentsBuilder){
 
@@ -31,7 +31,7 @@ public class UserAuthController {
         return ResponseEntity.ok(uri);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/user/{id}")
     @Transactional
     public ResponseEntity<?> updateUser(@RequestBody UserUpdateDTO userUpdateDTO, @PathVariable Integer id){
 
@@ -50,7 +50,7 @@ public class UserAuthController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/user/{id}")
     @Transactional
     public ResponseEntity<?> deleteUser(@PathVariable Integer id){
 
