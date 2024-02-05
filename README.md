@@ -57,7 +57,7 @@ Welcome to the HealthBridge API! This API is specifically tailored for healthcar
 - **Cancel - Doctor Appointment:** DELETE -> /api/appointment/doctor/{appointment id}
 
 ## Auth
-This API employs dual authentication mechanisms: JWT and API KEY. JWT authentication is utilized for all endpoints except for login and user registration, where API KEY authentication is employed. The API KEY necessary for login and user registration can be located in the application.properties file. All API KEY endpoints have /key/ as part of the URL.
+This API employs dual authentication mechanisms: JWT and API KEY. The token JWT authentication is utilized for all endpoints except for login and user registration, where API KEY authentication is employed. The API KEY necessary for login and user registration can be located in the application.properties file. All API KEY endpoints have /key/ as part of the URL.
 
 ### Auth and User:
 - **Register - User:** POST -> /api/key/user
