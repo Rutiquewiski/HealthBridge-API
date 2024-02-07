@@ -66,6 +66,6 @@ This API employs dual authentication mechanisms: JWT and API KEY. The token JWT 
 - **Login - With valid user:** POST -> /api/key/login
 
 ## Support
-For any questions or assistance regarding the Healthcare System API, or if you need the collection to test it with Postman, please contact me at gustavo.rutiquewiski@outlook.com.
+For any questions or assistance regarding the HealthBridge API, or if you need the collection to test it with Postman, please contact me at gustavo.rutiquewiski@outlook.com.
 
-Thank you for choosing the HealthBridge API. We hope it serves your needs effectively and contributes to the improvement of healthcare delivery.
+Thank you for choosing the HealthBridge API. I hope it serves your needs effectively and contributes to the improvement of healthcare delivery.
