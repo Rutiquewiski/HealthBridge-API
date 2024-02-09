@@ -37,7 +37,7 @@ public class DentistController {
         return ResponseEntity.ok(uri);
     }
 
-    @GetMapping("/token")
+    @GetMapping
     public ResponseEntity<?> getAllDentists(@RequestParam(required = false) String name, Pageable pageable) {
 
         Page<DentistListingDTO> dentists;
