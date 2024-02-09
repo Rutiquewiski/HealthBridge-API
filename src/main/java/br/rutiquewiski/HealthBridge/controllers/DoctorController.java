@@ -7,6 +7,7 @@ import br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO.DoctorRegistr
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO.DoctorUpdateDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.Doctor;
 import br.rutiquewiski.HealthBridge.repositories.DoctorRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("api/doctor")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
 
     @Autowired
