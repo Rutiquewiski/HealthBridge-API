@@ -88,3 +88,5 @@ public class SecurityConfiguration {
     }
 
 }
+
+//TODO: FIX THE AUTH, IT'S NOT USING BOTH 
