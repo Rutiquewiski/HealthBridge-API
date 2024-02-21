@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 public class ApiKeyExtractor {
 
-    //This class is responsible for extracting the api key and it's value from the headers of the request
+    //This class is responsible for extracting the api key, and it's value from the headers of the request
 
     @Value("${api.security.key.name}")
     private String name;
