@@ -55,7 +55,7 @@ public class SecurityConfiguration {
 
     @EnableWebSecurity
     @Configuration
-    @Order(2)  //This annotation sets this configuration to be the second one in the auth order
+    @Order(1)  //This annotation sets this configuration to be the second one in the auth order
     public static class StandardSecurityConfiguration {
 
         //Regular token auth

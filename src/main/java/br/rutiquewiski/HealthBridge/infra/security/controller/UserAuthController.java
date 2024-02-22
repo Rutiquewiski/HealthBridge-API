@@ -4,6 +4,7 @@ import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.UserRegistrationDT
 import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.UserUpdateDTO;
 import br.rutiquewiski.HealthBridge.infra.security.domain.UserAuth;
 import br.rutiquewiski.HealthBridge.infra.security.repositories.UserAuthRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class UserAuthController {
     @Autowired
     private UserAuthRepository userAuthRepository;
 
+    @SecurityRequirement(name = "api-key")
     @PostMapping("/key/user")
     @Transactional
     public ResponseEntity<?> registerUser(@RequestBody @Valid UserRegistrationDTO userRegistrationDTO, UriComponentsBuilder uriComponentsBuilder){
