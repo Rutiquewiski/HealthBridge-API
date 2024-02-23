@@ -25,7 +25,7 @@ public class ExceptionHandlerAPI {
         public ValidationErrorInfo(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
-    };
+    }
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<?> handleValidationException(ValidationException exception) {
