@@ -22,71 +22,46 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    @Configuration
-    @EnableWebSecurity
+    @Autowired
+    private KeySecurityFilter keySecurityFilter;
+
+    @Autowired
+    private TokenSecurityFilter tokenSecurityFilter;
+
+    @Bean
     @Order(1)
-    public static class ApiKeySecurityConfiguration {
-
-        //Api key auth, any endpoint with key in the url uses authentication with api key instead of the jwt token
-
-        @Autowired
-        private KeySecurityFilter keySecurityFilter;
-
-        @Bean
-        public SecurityFilterChain apiKeySecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            return httpSecurity
-                    .csrf(AbstractHttpConfigurer::disable)
-                    .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                    .authorizeHttpRequests(auth -> {
-                                auth.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
-                                auth.requestMatchers( AntPathRequestMatcher.antMatcher("/api/key/**") ).authenticated();
-                            }
-                    )
-                    .addFilterBefore(keySecurityFilter, UsernamePasswordAuthenticationFilter.class)
-                    .build();
-        }
-
-        @Bean
-        public AuthenticationManager authenticationManager2(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-            return  authenticationConfiguration.getAuthenticationManager();
-        }
-
+    public SecurityFilterChain apiKeySecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .securityMatcher("/api/key/**")
+                .authorizeHttpRequests(auth -> {auth.anyRequest().authenticated();})
+                .addFilterBefore(keySecurityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
-    @EnableWebSecurity
-    @Configuration
-    @Order(2)  //This annotation sets this configuration to be the second one in the auth order
-    public static class StandardSecurityConfiguration {
+    @Bean
+    @Order(2)
+    public SecurityFilterChain tokenSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .securityMatcher("/")
+                .authorizeHttpRequests(auth -> {auth.anyRequest().authenticated();})
+                .addFilterBefore(tokenSecurityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
 
-        //Regular token auth
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return  authenticationConfiguration.getAuthenticationManager();
+    }
 
-        @Autowired
-        private TokenSecurityFilter tokenSecurityFilter;
-
-        @Bean
-        public SecurityFilterChain tokenSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-            return httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                    .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                    .authorizeHttpRequests(auth -> {
-                        auth.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
-                        auth.anyRequest().authenticated();
-                    })
-                    .addFilterBefore(tokenSecurityFilter, UsernamePasswordAuthenticationFilter.class)
-                    .build();
-        }
-
-        @Bean
-        public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-            return  authenticationConfiguration.getAuthenticationManager();
-        }
-
-        @Bean
-        public PasswordEncoder passwordEncoder() {
-            return new BCryptPasswordEncoder();
-        }
-
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
 
-//TODO: FIX THE AUTH, IT'S NOT USING BOTH 
+//TODO: FIX THE AUTH, CURRENTLY SPRING BOOT IS NOT ACCEPTING TWO DIFFERENT AUTHENTICATION METHODS

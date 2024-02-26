@@ -5,6 +5,7 @@ import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.AuthenticationDTO;
 import br.rutiquewiski.HealthBridge.infra.security.domain.UserAuth;
 import br.rutiquewiski.HealthBridge.infra.security.service.TokenService;
 import br.rutiquewiski.HealthBridge.infra.security.token.ResponseTokenDTO;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/key/login")
+@SecurityRequirement(name = "api-key")
 public class AuthenticationController {
 
     @Autowired
