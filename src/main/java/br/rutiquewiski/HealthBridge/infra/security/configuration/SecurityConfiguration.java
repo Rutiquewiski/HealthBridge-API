@@ -30,6 +30,9 @@ public class SecurityConfiguration {
     @Bean
     @Order(1)
     public SecurityFilterChain apiKeySecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
+        //This filter is responsible for the API KEY authentication and it is the first one to be used by the request
+        
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
