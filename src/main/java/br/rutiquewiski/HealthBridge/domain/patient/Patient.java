@@ -24,6 +24,7 @@ public class Patient {
     private String email;
     private String phone;
     private String document;
+    private String medicalHistory;
 
     @Embedded
     private Adress adress;
@@ -36,6 +37,7 @@ public class Patient {
         this.phone = patientRegistrationDTO.phone();
         this.document = patientRegistrationDTO.document();
         this.adress = new Adress(patientRegistrationDTO.adress());
+        this.medicalHistory = patientRegistrationDTO.medicalHistory();
         this.active = true;
     }
 
@@ -59,6 +61,10 @@ public class Patient {
 
         if (patientUpdateDTO.adress() != null) {
             this.adress = new Adress(patientUpdateDTO.adress());
+        }
+
+        if (patientUpdateDTO.medicalHistory() != null) {
+            this.medicalHistory = patientUpdateDTO.medicalHistory();
         }
     }
 

@@ -9,9 +9,10 @@ public record PatientDetailsDTO(
         String email,
         String phone,
         String document,
-        Adress adress
+        Adress adress,
+        String medicalHistory
 ) {
     public PatientDetailsDTO(Patient patient) {
-        this(patient.getId(), patient.getName(), patient.getEmail(), patient.getPhone(), patient.getDocument(), patient.getAdress());
+        this(patient.getId(), patient.getName(), patient.getEmail(), patient.getPhone(), patient.getDocument(), patient.getAdress(), patient.getMedicalHistory());
     }
 }

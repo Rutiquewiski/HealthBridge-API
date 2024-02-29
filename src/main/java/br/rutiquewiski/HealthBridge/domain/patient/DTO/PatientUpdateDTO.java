@@ -17,6 +17,7 @@ public record PatientUpdateDTO(
 
         String document,
         @Valid
-        AdressDTO adress
+        AdressDTO adress,
+        String medicalHistory
 ) {
 }

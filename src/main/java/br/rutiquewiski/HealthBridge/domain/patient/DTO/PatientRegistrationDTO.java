@@ -16,6 +16,7 @@ public record PatientRegistrationDTO(
         @NotNull
         String document,
         @Valid
-        AdressDTO adress
+        AdressDTO adress,
+        String medicalHistory
 ) {
 }
