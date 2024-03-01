@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -31,6 +30,9 @@ public class SecurityConfiguration {
     @Bean
     @Order(1)
     public SecurityFilterChain apiKeySecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
+        //This filter is responsible for the API KEY authentication and it is the first one to be used by the request
+        
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -53,6 +55,17 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    @Order(3)
+    public SecurityFilterChain swaggerApiDocsSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .securityMatcher("/swagger-ui.html", "/swagger-ui/**")
+                .authorizeHttpRequests(auth -> {auth.anyRequest().permitAll();})
+                .build();
+    }
+
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return  authenticationConfiguration.getAuthenticationManager();
     }
@@ -63,5 +76,3 @@ public class SecurityConfiguration {
     }
 
 }
-
-//TODO: FIX THE AUTH, CURRENTLY SPRING BOOT IS NOT ACCEPTING TWO DIFFERENT AUTHENTICATION METHODS
