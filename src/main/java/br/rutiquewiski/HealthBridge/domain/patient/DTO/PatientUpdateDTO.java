@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.patient.DTO;
 
-import br.rutiquewiski.HealthBridge.domain.adress.AdressDTO;
+import br.rutiquewiski.HealthBridge.domain.adress.AddressDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 
@@ -17,7 +17,7 @@ public record PatientUpdateDTO(
 
         String document,
         @Valid
-        AdressDTO adress,
+        AddressDTO address,
         String medicalHistory
 ) {
 }

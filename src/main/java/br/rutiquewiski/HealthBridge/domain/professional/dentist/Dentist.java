@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.professional.dentist;
 
-import br.rutiquewiski.HealthBridge.domain.adress.Adress;
+import br.rutiquewiski.HealthBridge.domain.adress.Address;
 import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistRegistrationDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO.DentistUpdateDTO;
 import jakarta.persistence.*;
@@ -27,7 +27,7 @@ public class Dentist {
     private String document;
 
     @Embedded
-    private Adress adress;
+    private Address address;
 
     @ManyToMany
     @JoinTable(
@@ -44,7 +44,7 @@ public class Dentist {
         this.email = dentistRegistrationDTO.email();
         this.phone = dentistRegistrationDTO.phone();
         this.document = dentistRegistrationDTO.document();
-        this.adress = new Adress(dentistRegistrationDTO.adress());
+        this.address = new Address(dentistRegistrationDTO.address());
         this.specialties = dentistRegistrationDTO.specialties();
         this.active = true;
     }
@@ -67,8 +67,8 @@ public class Dentist {
             this.document = dentistUpdateDTO.document();
         }
 
-        if (dentistUpdateDTO.adress() != null) {
-            this.adress = new Adress(dentistUpdateDTO.adress());
+        if (dentistUpdateDTO.address() != null) {
+            this.address = new Address(dentistUpdateDTO.address());
         }
 
         if (dentistUpdateDTO.specialties() != null) {

@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO;
 
-import br.rutiquewiski.HealthBridge.domain.adress.Adress;
+import br.rutiquewiski.HealthBridge.domain.adress.Address;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.Doctor;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.MedicalSpecialty;
 
@@ -12,11 +12,11 @@ public record DoctorDetailsDTO(
         String email,
         String phone,
         String document,
-        Adress adress,
+        Address address,
         List<MedicalSpecialty> specialties
 ) {
 
     public DoctorDetailsDTO(Doctor doctor) {
-        this(doctor.getId(), doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getDocument(), doctor.getAdress(), doctor.getSpecialties());
+        this(doctor.getId(), doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getDocument(), doctor.getAddress(), doctor.getSpecialties());
     }
 }

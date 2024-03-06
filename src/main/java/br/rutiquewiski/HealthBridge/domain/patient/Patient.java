@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.patient;
 
-import br.rutiquewiski.HealthBridge.domain.adress.Adress;
+import br.rutiquewiski.HealthBridge.domain.adress.Address;
 import br.rutiquewiski.HealthBridge.domain.patient.DTO.PatientRegistrationDTO;
 import br.rutiquewiski.HealthBridge.domain.patient.DTO.PatientUpdateDTO;
 
@@ -27,7 +27,7 @@ public class Patient {
     private String medicalHistory;
 
     @Embedded
-    private Adress adress;
+    private Address address;
 
     private boolean active;
 
@@ -36,7 +36,7 @@ public class Patient {
         this.email = patientRegistrationDTO.email();
         this.phone = patientRegistrationDTO.phone();
         this.document = patientRegistrationDTO.document();
-        this.adress = new Adress(patientRegistrationDTO.adress());
+        this.address = new Address(patientRegistrationDTO.address());
         this.medicalHistory = patientRegistrationDTO.medicalHistory();
         this.active = true;
     }
@@ -59,8 +59,8 @@ public class Patient {
             this.document = patientUpdateDTO.document();
         }
 
-        if (patientUpdateDTO.adress() != null) {
-            this.adress = new Adress(patientUpdateDTO.adress());
+        if (patientUpdateDTO.address() != null) {
+            this.address = new Address(patientUpdateDTO.address());
         }
 
         if (patientUpdateDTO.medicalHistory() != null) {

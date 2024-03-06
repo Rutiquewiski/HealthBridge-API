@@ -3,7 +3,7 @@ package br.rutiquewiski.HealthBridge.domain.adress;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record AdressDTO(
+public record AddressDTO(
         @NotBlank
         String street_address,
 
