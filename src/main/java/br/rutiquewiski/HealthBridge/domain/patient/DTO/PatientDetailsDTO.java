@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.patient.DTO;
 
-import br.rutiquewiski.HealthBridge.domain.adress.Adress;
+import br.rutiquewiski.HealthBridge.domain.adress.Address;
 import br.rutiquewiski.HealthBridge.domain.patient.Patient;
 
 public record PatientDetailsDTO(
@@ -9,10 +9,10 @@ public record PatientDetailsDTO(
         String email,
         String phone,
         String document,
-        Adress adress,
+        Address address,
         String medicalHistory
 ) {
     public PatientDetailsDTO(Patient patient) {
-        this(patient.getId(), patient.getName(), patient.getEmail(), patient.getPhone(), patient.getDocument(), patient.getAdress(), patient.getMedicalHistory());
+        this(patient.getId(), patient.getName(), patient.getEmail(), patient.getPhone(), patient.getDocument(), patient.getAddress(), patient.getMedicalHistory());
     }
 }

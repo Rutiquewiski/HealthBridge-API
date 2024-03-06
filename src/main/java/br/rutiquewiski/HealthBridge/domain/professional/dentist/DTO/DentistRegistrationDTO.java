@@ -1,6 +1,6 @@
 package br.rutiquewiski.HealthBridge.domain.professional.dentist.DTO;
 
-import br.rutiquewiski.HealthBridge.domain.adress.AdressDTO;
+import br.rutiquewiski.HealthBridge.domain.adress.AddressDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.dentist.DentalSpecialty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -19,7 +19,7 @@ public record DentistRegistrationDTO(
         @NotNull
         String document,
         @Valid
-        AdressDTO adress,
+        AddressDTO address,
         List<DentalSpecialty>specialties
 ) {
 }
