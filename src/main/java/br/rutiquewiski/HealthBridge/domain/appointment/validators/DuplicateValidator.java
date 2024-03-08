@@ -3,8 +3,8 @@ package br.rutiquewiski.HealthBridge.domain.appointment.validators;
 import br.rutiquewiski.HealthBridge.domain.appointment.dentist.DTO.CreateDentistAppointmentDTO;
 import br.rutiquewiski.HealthBridge.domain.appointment.doctor.DTO.CreateDoctorAppointmentDTO;
 import br.rutiquewiski.HealthBridge.infra.errors.ValidationException;
-import br.rutiquewiski.HealthBridge.repositories.Appointment_DentistRepository;
-import br.rutiquewiski.HealthBridge.repositories.Appointment_DoctorRepository;
+import br.rutiquewiski.HealthBridge.repositories.AppointmentDentistRepository;
+import br.rutiquewiski.HealthBridge.repositories.AppointmentDoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +14,10 @@ public class DuplicateValidator implements AppointmentCreationValidator{
     //This validator checks if the patient already has an appointment on this date
 
     @Autowired
-    private Appointment_DentistRepository appointment_dentistRepository;
+    private AppointmentDentistRepository appointment_dentistRepository;
 
     @Autowired
-    private Appointment_DoctorRepository appointment_doctorRepository;
+    private AppointmentDoctorRepository appointment_doctorRepository;
 
     @Override
     public void validateDentistAppointment(CreateDentistAppointmentDTO createDentistAppointmentDTO) throws ValidationException {
