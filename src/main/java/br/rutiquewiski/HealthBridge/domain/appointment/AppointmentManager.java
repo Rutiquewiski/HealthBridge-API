@@ -30,10 +30,10 @@ public class AppointmentManager {
     private PatientRepository patientRepository;
 
     @Autowired
-    private Appointment_DentistRepository appointment_dentistRepository;
+    private AppointmentDentistRepository appointment_dentistRepository;
 
     @Autowired
-    private Appointment_DoctorRepository appointment_doctorRepository;
+    private AppointmentDoctorRepository appointment_doctorRepository;
 
     @Autowired
     private List<AppointmentCreationValidator> validators;  //Spring automatically detects all classes that use the interface between <> and adds them to the list

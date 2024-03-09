@@ -1,15 +1,15 @@
 package br.rutiquewiski.HealthBridge.repositories;
 
-import br.rutiquewiski.HealthBridge.domain.appointment.dentist.Appointment_Dentist;
+import br.rutiquewiski.HealthBridge.domain.appointment.doctor.Appointment_Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 
 @Repository
-public interface Appointment_DentistRepository extends JpaRepository<Appointment_Dentist, Integer> {
+public interface AppointmentDoctorRepository extends JpaRepository<Appointment_Doctor, Integer> {
 
-    boolean existsByDentistIdAndDate(Integer dentistId, LocalDateTime date);
+    boolean existsByDoctorIdAndDate(Integer doctorId, LocalDateTime date);
 
     boolean existsByPatientIdAndDateBetween(Integer patientId, LocalDateTime first, LocalDateTime last);
 }
