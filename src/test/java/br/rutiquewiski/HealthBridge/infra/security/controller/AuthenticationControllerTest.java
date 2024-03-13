@@ -1,7 +1,6 @@
 package br.rutiquewiski.HealthBridge.infra.security.controller;
 
 import br.rutiquewiski.HealthBridge.infra.errors.LoginDataException;
-import br.rutiquewiski.HealthBridge.infra.security.controller.AuthenticationController;
 import br.rutiquewiski.HealthBridge.infra.security.domain.DTO.AuthenticationDTO;
 import br.rutiquewiski.HealthBridge.infra.security.service.TokenService;
 import br.rutiquewiski.HealthBridge.infra.security.token.ResponseTokenDTO;
@@ -13,8 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 public class AuthenticationControllerTest {
 
