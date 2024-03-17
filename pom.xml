@@ -12,7 +12,7 @@
 	<artifactId>HealthBridge</artifactId>
 	<version>1.0.0</version>
 	<name>HealthBridge</name>
-	<description>API project por health care system</description>
+	<description>API project for the HealthBridge system, created by Gustavo Rutiquewiski</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
