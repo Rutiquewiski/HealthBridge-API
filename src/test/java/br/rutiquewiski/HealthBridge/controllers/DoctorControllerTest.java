@@ -1,6 +1,7 @@
 package br.rutiquewiski.HealthBridge.controllers;
 
 import br.rutiquewiski.HealthBridge.domain.adress.AddressDTO;
+import br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO.DoctorListingDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO.DoctorRegistrationDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.DTO.DoctorUpdateDTO;
 import br.rutiquewiski.HealthBridge.domain.professional.doctor.Doctor;
@@ -65,7 +66,7 @@ public class DoctorControllerTest {
         // Given
         String name = "Dr. Smith";
         Pageable pageable = PageRequest.of(0, 10);
-        List<Doctor> doctorsList = List.of(new Doctor(), new Doctor());
+        List<DoctorListingDTO> doctorsList = List.of(new DoctorListingDTO(new Doctor()));
 
         // When
         when(doctorRepository.findAllByActiveTrueAndNameContaining(pageable, name)).thenReturn(doctorPage);
