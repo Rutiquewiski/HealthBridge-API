@@ -6,6 +6,7 @@ import br.rutiquewiski.HealthBridge.domain.professional.doctor.MedicalSpecialty;
 import java.util.List;
 
 public record DoctorListingDTO(
+        int id,
         String name,
         String email,
         String phone,
@@ -14,6 +15,6 @@ public record DoctorListingDTO(
 ) {
 
     public DoctorListingDTO(Doctor doctor) {
-        this(doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getDocument(), doctor.getSpecialties());
+        this(doctor.getId(), doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getDocument(), doctor.getSpecialties());
     }
 }
